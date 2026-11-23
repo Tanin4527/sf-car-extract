@@ -34,15 +34,15 @@ jobs:
           ./build.sh
 
       - name: Extract glyph paths
-  run:
-      cd sf-car-extract
-      mkdir -p out
-      ./sfextract ../Assets.car names.txt out --allow-missing --dump-names
-      ls -lh out
-      if [ -f out/missing.txt ]; then
-        echo "::warning::Some symbols were not extracted:"
-        cat out/missing.txt
-        fi
+          run: |
+              cd sf-car-extract
+              mkdir -p out
+              ./sfextract ../Assets.car names.txt out --allow-missing --dump-names
+              ls -lh out
+              if [ -f out/missing.txt ]; then
+                echo "::warning::Some symbols were not extracted:"
+                cat out/missing.txt
+                fi
         
         - name: Upload results
                 if: always()
