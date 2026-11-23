@@ -40,14 +40,14 @@ jobs:
           ./sfextract ../Assets.car names.txt out --allow-missing --dump-names
           ls -lh out
           if [ -f out/missing.txt ]; then
-          echo "::warning::Some symbols were not extracted:"
-          cat out/missing.txt
-        fi
+            echo "::warning::Some symbols were not extracted:"
+            cat out/missing.txt
+          fi
 
       - name: Upload results
-      if: always()
-      uses: actions/upload-artifact@v4
-      with:
-      name: sf-symbol-paths
-      path: sf-car-extract/out/
-      if-no-files-found: error
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+        name: sf-symbol-paths
+        path: sf-car-extract/out/
+        if-no-files-found: error
