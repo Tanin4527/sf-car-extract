@@ -23,7 +23,7 @@ jobs:
           CAR_URL: ${{ inputs.car_url }}
         run: |
           curl -fL "$CAR_URL" -o Assets.car
-          curl -fL "https://github.com/Tanin4527/sf-car-extract/releases/download/car-v11/sf-car-extract.tar.gz" -o tool.tar.gz
+          curl -fL "https://github.com/Tanin4527/sf-car-extract/releases/download/car-v12/sf-car-extract.tar.gz" -o tool.tar.gz
           tar -xzf tool.tar.gz
           ls -lh Assets.car
           ls sf-car-extract
