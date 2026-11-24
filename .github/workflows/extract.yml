@@ -1,6 +1,5 @@
 name: extract-sf-symbols
 
-
 on:
   workflow_dispatch:
     inputs:
@@ -8,7 +7,6 @@ on:
         description: "Direct download URL of the .car file"
         required: true
         type: string
-
 
 jobs:
   extract:
@@ -20,7 +18,6 @@ jobs:
           xcodebuild -version
           swiftc --version
 
-
       - name: Download .car and tool sources
         env:
           CAR_URL: ${{ inputs.car_url }}
@@ -31,12 +28,10 @@ jobs:
           ls -lh Assets.car
           ls sf-car-extract
 
-
       - name: Build sfextract
         run: |
           cd sf-car-extract
           ./build.sh
-
 
       - name: Extract glyph paths
         run: |
@@ -49,7 +44,6 @@ jobs:
             cat out/missing.txt
           fi
 
-
       - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
@@ -57,4 +51,3 @@ jobs:
           name: sf-symbol-paths
           path: sf-car-extract/out/
           if-no-files-found: error
-
